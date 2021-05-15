@@ -5,7 +5,7 @@ export default function counter(state = 0, action) {
     case "DECREMENT":
       return state - 1;
     case "SET":
-      return action.val;
+      return action.value;
     default:
       return state;
   }

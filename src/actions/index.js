@@ -5,7 +5,7 @@ import set from "./set";
 const actions = {
   increment,
   decrement,
-  set
+  set,
 };
 
 export default actions;

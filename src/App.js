@@ -1,20 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import actions from "./actions";
 
 function App() {
+  const [value, setValue] = useState();
   // useSelector takes in argument store.state which can be shorthand for state
   const counter = useSelector((state) => state.counter);
   // useDisplay returns store.dispatch()
   const dispatch = useDispatch();
 
   return (
-    <React.Fragment>
-      <div>{counter}</div>
-      <button onClick={() => dispatch(actions.increment())}>+</button>
-      <button onClick={() => dispatch(actions.decrement())}>-</button>
-      <button onClick={() => dispatch(actions.set(5))}>SET 5</button>
-    </React.Fragment>
+    <div id="container" style={{ margin: "0 20px" }}>
+      <h1>{counter}</h1>
+      <div>
+        <button
+          onClick={() => dispatch(actions.increment())}
+          style={{ fontSize: "48px" }}
+        >
+          +
+        </button>{" "}
+        <button
+          onClick={() => dispatch(actions.decrement())}
+          style={{ fontSize: "48px" }}
+        >
+          -
+        </button>
+      </div>
+      <br />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatch(actions.set(Number(value)));
+        }}
+      >
+        <div>Set to Custom Number</div>
+        <input
+          type="number"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />{" "}
+        <button
+          type="submit"
+          onClick={() => dispatch(actions.set(Number(value)))}
+        >
+          SET {value}
+        </button>
+      </form>
+    </div>
   );
 }
 

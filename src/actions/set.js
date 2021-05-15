@@ -1,6 +1,6 @@
-export default function set(number) {
+export default function set(value) {
   return {
     type: "SET",
-    val: number,
+    value: value,
   };
 }
