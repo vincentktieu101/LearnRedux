@@ -35,7 +35,6 @@ function App() {
       >
         <div>Set to Custom Number</div>
         <input
-          type="number"
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />{" "}
@@ -43,7 +42,7 @@ function App() {
           type="submit"
           onClick={() => dispatch(actions.set(Number(value)))}
         >
-          SET {value}
+          SET
         </button>
       </form>
     </div>
